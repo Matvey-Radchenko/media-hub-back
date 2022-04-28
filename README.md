@@ -2,10 +2,6 @@
 
 ### `npm i`
 
-## Start React
-
-### `npm start`
-
 ## Start server
 
 ### `npm run start:dev`
