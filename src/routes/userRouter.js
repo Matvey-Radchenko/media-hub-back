@@ -7,11 +7,16 @@ router.post('/signup', async (req, res) => {
   if (name && password && email) {
     const secretPass = await bcrypt.hash(password, Number('10'));
     console.log('kavabanga');
-    const newUser = await User.create({ ...req.body, password: secretPass });
-    req.session.user = { id: newUser.id, name: newUser.name };
-    return res.send('ok');
+    try {
+      const newUser = await User.create({ ...req.body, password: secretPass });
+      req.session.user = { id: newUser.id, name: newUser.name };
+      return res.sendStatus(200);
+    } catch (err) {
+      // console.log(err);
+      return res.sendStatus(401);
+    }
   }
-  return res.send('err');
+  return res.sendStatus(500);
 });
 
 router.post('/signin', async (req, res) => {
