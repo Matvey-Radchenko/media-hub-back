@@ -21,16 +21,18 @@ router.post('/signup', async (req, res) => {
 
 router.post('/signin', async (req, res) => {
   const { email, password } = req.body;
-  const error = { name: 'Ошибка ввода данных : email или Пароль неверный!' };
+  // const error = { name: 'Ошибка ввода данных : email или Пароль неверный!' };
   if (email && password) {
     const currentUser = await User.findOne({ where: { email } });
-
     if (currentUser && await bcrypt.compare(password, currentUser.password)) {
       req.session.user = { id: currentUser.id, name: currentUser.name };
-      return res.send('OK');
+      // return res.send('OK');
+      return res.sendStatus(200);
     }
+
+    return res.sendStatus(401);
   }
-  return res.send(error);
+  return res.send(500);
 });
 
 router.post('/profile', async (req, res) => {
