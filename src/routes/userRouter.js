@@ -13,7 +13,7 @@ router.post('/signup', async (req, res) => {
       return res.sendStatus(200);
     } catch (err) {
       // console.log(err);
-      return res.sendStatus(401);
+      return res.status(401).json({ status: false, message: 'Ошибка авторизации' });
     }
   }
   return res.sendStatus(500);
@@ -27,7 +27,7 @@ router.post('/signin', async (req, res) => {
     if (currentUser && await bcrypt.compare(password, currentUser.password)) {
       req.session.user = { id: currentUser.id, name: currentUser.name };
       // return res.send('OK');
-      return res.sendStatus(200);
+      return res.json({ id: currentUser.id, name: currentUser.name });
     }
 
     return res.sendStatus(401);
