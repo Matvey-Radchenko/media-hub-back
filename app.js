@@ -4,8 +4,16 @@ require('dotenv').config();
 const createError = require('http-errors');
 
 const app = express();
-const http = require('http').createServer(app);
-const io = require('socket.io')(http);
+const http = require('http');
+const cors = require('cors');
+
+app.use(cors());
+
+// const io = require('socket.io')(http);
+const { Server } = require('socket.io');
+
+const server = http.createServer(app);
+
 const session = require('express-session');
 const FileStore = require('session-file-store')(session);
 const path = require('path');
@@ -29,6 +37,12 @@ const sessionConfig = {
 };
 
 const sessionParser = session(sessionConfig);
+const io = new Server(server, {
+  cors: {
+    origin: 'http://localhost:3000',
+    methods: ['GET', 'POST'],
+  },
+});
 app.use(sessionParser);
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
@@ -60,6 +74,6 @@ io.on('connection', (socket) => { // генерация событий кото�
   });
 });
 
-http.listen(PORT, () => {
+server.listen(PORT, () => {
   console.log('listening on 3001');
 });
