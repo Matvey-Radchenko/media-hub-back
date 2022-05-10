@@ -13,7 +13,7 @@ module.exports = {
       {
         name: 'Dartanyan',
         email: 'dartanyan@mail.ru',
-        password: 123,
+        password: '$2b$10$utNwBMfTctBqg70227vtqO9mWNioIqseNMpIdR0zRrxI5liV5GkDa',
         avatar: 'https://www.kino-teatr.ru/movie/kadr/1557/240869.jpg',
         description: 'Один за все и все за одного',
         status: true,
@@ -23,7 +23,7 @@ module.exports = {
       {
         name: 'Aramis',
         email: 'aramis@mail.ru',
-        password: 123,
+        password: '$2b$10$utNwBMfTctBqg70227vtqO9mWNioIqseNMpIdR0zRrxI5liV5GkDa',
         avatar: 'https://i.ibb.co/4MtkVfV/IMG-4473.jpg',
         description: 'Один за все и все за одного',
         status: true,
@@ -33,7 +33,7 @@ module.exports = {
       {
         name: 'Portos',
         email: 'portos@mail.ru',
-        password: 123,
+        password: '$2b$10$utNwBMfTctBqg70227vtqO9mWNioIqseNMpIdR0zRrxI5liV5GkDa',
         avatar: 'https://citaty.info/files/characters/2504.jpg',
         description: 'Один за все и все за одного',
         status: true,
@@ -43,7 +43,7 @@ module.exports = {
       {
         name: 'Atos',
         email: 'atos@mail.ru',
-        password: 123,
+        password: '$2b$10$utNwBMfTctBqg70227vtqO9mWNioIqseNMpIdR0zRrxI5liV5GkDa',
         avatar: 'https://citaty.info/files/characters/2351.jpg',
         description: 'Один за все и все за одного',
         status: true,

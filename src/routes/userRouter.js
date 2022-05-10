@@ -1,6 +1,6 @@
 const router = require('express').Router();
 const bcrypt = require('bcrypt');
-const async = require('hbs/lib/async');
+// const async = require('hbs/lib/async');
 const { User } = require('../../db/models');
 
 router.post('/signup', async (req, res) => {
