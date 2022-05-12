@@ -1,5 +1,6 @@
 const router = require('express').Router();
 const bcrypt = require('bcrypt');
+const { escapeForRegExp } = require('session-file-store/lib/session-file-helpers');
 // const async = require('hbs/lib/async');
 const { User } = require('../../db/models');
 
@@ -76,6 +77,6 @@ router.get('/logout', (req, res) => {
   console.log('=========================================', req);
   req.session.destroy();
   res.clearCookie('sid');
-  res.sendStatus(200);
+  res.sendStatus(200); 
 });
 module.exports = router;
