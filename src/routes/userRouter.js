@@ -7,7 +7,7 @@ const { User } = require('../../db/models');
 router.post('/signup', async (req, res) => {
   const { name, password, email } = req.body;
   if (name && password && email) {
-    const secretPass = await bcrypt.hash(password, Number('10'));
+    const secretPass = await bcrypt.hash(password, Number(process.env.ROUNDS));
     console.log('kavabanga');
     try {
       const newUser = await User.create({ ...req.body, password: secretPass });
@@ -77,6 +77,6 @@ router.get('/logout', (req, res) => {
   console.log('=========================================', req);
   req.session.destroy();
   res.clearCookie('sid');
-  res.sendStatus(200); 
+  res.sendStatus(200);
 });
 module.exports = router;

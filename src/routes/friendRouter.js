@@ -48,14 +48,22 @@ const { Friends, User } = require('../../db/models');
 //   });
 //   return res.json(tmp);
 // });
+router.post('/all', async (req, res) => {
+  const newFriend = await Friends.create(
+    { userId: req.body.currentUser, friendId: req.body.id },
+  );
+  console.log(newFriend);
+  return res.json(newFriend);
+});
+// router.delete('/delete', async (req, res) => {
+//   await Friends.destroy({ where: { userId: req.body.currentUser, friendId: req.body.id } });
+//   res.sendStatus('200');
+// });
 
 router.get('/:id', async (req, res) => {
   // const currentUser = await User.findOne({ where: { id: req.params.id } });
   let friends = await Friends.findAll({ where: { userId: req.params.id }, raw: true });
-  // console.log('friends1==========', friends);
   friends = friends.map((el) => ({ id: el.friendId }));
-  // console.log('friends1==========', friends);
-  // let count = 0;
   const tmp = await User.findAll({
     where: {
       [Op.or]: friends, // если совпадает хотя б с одним элементом, тогда записывает
